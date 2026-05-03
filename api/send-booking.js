@@ -10,11 +10,15 @@ export default async function handler(request, response) {
   const privateKey = process.env.EMAILJS_PRIVATE_KEY;
 
   if (!serviceId || !templateId || !publicKey || !privateKey) {
+    console.log("Missing server email settings");
     response.status(500).json({ message: "Server email settings are missing." });
     return;
   }
 
-  const data = request.body || {};
+  const data =
+    typeof request.body === "string"
+      ? JSON.parse(request.body || "{}")
+      : (request.body || {});
 
   const emailBody = {
     service_id: serviceId,
@@ -41,12 +45,16 @@ export default async function handler(request, response) {
 
     if (!emailResponse.ok) {
       const errorText = await emailResponse.text();
+      console.log("EmailJS error status:", emailResponse.status);
+      console.log("EmailJS error text:", errorText);
       response.status(500).json({ message: errorText || "Email send failed." });
       return;
     }
 
+    console.log("Email sent successfully");
     response.status(200).json({ message: "Email sent" });
   } catch (error) {
+    console.log("Email request failed:", error.message);
     response.status(500).json({ message: "Email request failed." });
   }
 }
