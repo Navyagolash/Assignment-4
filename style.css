@@ -1,0 +1,325 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fb;
+  color: #222;
+  line-height: 1.5;
+}
+
+.top-bar {
+  background-color: #1f66d1;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.main-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.menu-button {
+  display: none;
+  background-color: white;
+  color: #1f66d1;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+}
+
+.hero-section,
+.content-section,
+.stats-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-text h2 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  margin-bottom: 16px;
+  color: #444;
+}
+
+.hero-image-box {
+  min-height: 220px;
+  background-color: #dfeafc;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-icon {
+  font-size: 80px;
+}
+
+.stats-section {
+  background-color: #1f66d1;
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.stat-box h3 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  margin-bottom: 6px;
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  border: 1px solid #d8dfeb;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eceff5;
+}
+
+.service-item:last-child {
+  border-bottom: none;
+}
+
+.service-name {
+  font-weight: bold;
+}
+
+.service-price {
+  color: #555;
+  font-size: 14px;
+}
+
+.service-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.small-button,
+.primary-button {
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.small-button {
+  padding: 10px 12px;
+}
+
+.primary-button {
+  background-color: #1f66d1;
+  color: white;
+  padding: 12px 18px;
+}
+
+.add-button {
+  background-color: #1f66d1;
+  color: white;
+}
+
+.remove-button {
+  background-color: #fce3e3;
+  color: #a32020;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.cart-table th,
+.cart-table td {
+  text-align: left;
+  padding: 10px 6px;
+  border-bottom: 1px solid #eceff5;
+  font-size: 14px;
+}
+
+.cart-table th:last-child,
+.cart-table td:last-child {
+  text-align: right;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.newsletter-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cdd6e3;
+  border-radius: 6px;
+}
+
+.form-button {
+  width: 100%;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.newsletter-box {
+  background-color: #1f66d1;
+  color: white;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.newsletter-form {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.newsletter-form input {
+  min-width: 220px;
+}
+
+.message-box {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 6px;
+  display: none;
+}
+
+.message-box.success {
+  display: block;
+  background-color: #e5f6e7;
+  color: #236533;
+}
+
+.message-box.error {
+  display: block;
+  background-color: #fde8e8;
+  color: #9c1f1f;
+}
+
+.newsletter-message {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-footer {
+  text-align: center;
+  padding: 18px;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: inline-block;
+  }
+
+  .nav-list {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .nav-list.show {
+    display: flex;
+  }
+
+  .hero-section,
+  .booking-grid,
+  .feature-grid,
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-text h2 {
+    font-size: 28px;
+  }
+
+  .service-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

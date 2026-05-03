@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 4 - Laundry Services</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <nav class="main-nav">
+      <h1 class="logo">FreshWash</h1>
+
+      <button id="menuButton" class="menu-button" type="button">Menu</button>
+
+      <ul id="navList" class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero-section">
+      <article class="hero-text">
+        <h2>Laundry Booking Website</h2>
+        <p>
+          This website lets a user add laundry services, check the cart total,
+          and book a service using a simple form.
+        </p>
+        <button id="heroButton" class="primary-button" type="button">Book a Service</button>
+      </article>
+
+      <aside class="hero-image-box">
+        <span class="hero-icon">🧺</span>
+      </aside>
+    </section>
+
+    <section class="stats-section">
+      <article class="stat-box">
+        <h3>15+</h3>
+        <p>Services</p>
+      </article>
+      <article class="stat-box">
+        <h3>240+</h3>
+        <p>Happy Customers</p>
+      </article>
+      <article class="stat-box">
+        <h3>2+</h3>
+        <p>Years Experience</p>
+      </article>
+    </section>
+
+    <section id="services" class="content-section">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Add service items to the cart and then complete the booking form.</p>
+      </div>
+
+      <div class="booking-grid">
+        <article class="card">
+          <h3>Service List</h3>
+
+          <div class="service-item">
+            <div>
+              <p class="service-name">Dry Cleaning</p>
+              <p class="service-price">&#8377;200</p>
+            </div>
+            <div class="service-buttons">
+              <button class="small-button remove-button" type="button" data-name="Dry Cleaning">Remove</button>
+              <button class="small-button add-button" type="button" data-name="Dry Cleaning" data-price="200">Add</button>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p class="service-name">Wash and Fold</p>
+              <p class="service-price">&#8377;100</p>
+            </div>
+            <div class="service-buttons">
+              <button class="small-button remove-button" type="button" data-name="Wash and Fold">Remove</button>
+              <button class="small-button add-button" type="button" data-name="Wash and Fold" data-price="100">Add</button>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p class="service-name">Ironing</p>
+              <p class="service-price">&#8377;50</p>
+            </div>
+            <div class="service-buttons">
+              <button class="small-button remove-button" type="button" data-name="Ironing">Remove</button>
+              <button class="small-button add-button" type="button" data-name="Ironing" data-price="50">Add</button>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p class="service-name">Stain Removal</p>
+              <p class="service-price">&#8377;150</p>
+            </div>
+            <div class="service-buttons">
+              <button class="small-button remove-button" type="button" data-name="Stain Removal">Remove</button>
+              <button class="small-button add-button" type="button" data-name="Stain Removal" data-price="150">Add</button>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p class="service-name">Leather and Suede Cleaning</p>
+              <p class="service-price">&#8377;500</p>
+            </div>
+            <div class="service-buttons">
+              <button class="small-button remove-button" type="button" data-name="Leather and Suede Cleaning">Remove</button>
+              <button class="small-button add-button" type="button" data-name="Leather and Suede Cleaning" data-price="500">Add</button>
+            </div>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p class="service-name">Wedding Dress Cleaning</p>
+              <p class="service-price">&#8377;2000</p>
+            </div>
+            <div class="service-buttons">
+              <button class="small-button remove-button" type="button" data-name="Wedding Dress Cleaning">Remove</button>
+              <button class="small-button add-button" type="button" data-name="Wedding Dress Cleaning" data-price="2000">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <aside class="right-side">
+          <article class="card">
+            <h3>Cart</h3>
+
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Service Name</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="cartBody">
+                <tr>
+                  <td colspan="3">No items added yet.</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="total-row">
+              <span>Total Amount</span>
+              <span id="totalAmount">&#8377;0</span>
+            </div>
+          </article>
+
+          <article class="card booking-card">
+            <h3>Book Now</h3>
+
+            <form id="bookingForm">
+              <div class="form-group">
+                <label for="bookName">Full Name</label>
+                <input type="text" id="bookName" name="bookName">
+              </div>
+
+              <div class="form-group">
+                <label for="bookEmail">Email</label>
+                <input type="email" id="bookEmail" name="bookEmail">
+              </div>
+
+              <div class="form-group">
+                <label for="bookPhone">Phone Number</label>
+                <input type="tel" id="bookPhone" name="bookPhone">
+              </div>
+
+              <button class="primary-button form-button" type="submit">Book Now</button>
+            </form>
+
+            <p id="bookingMessage" class="message-box"></p>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about" class="content-section">
+      <div class="section-title">
+        <h2>Why Choose Us</h2>
+        <p>These are some simple reasons why customers use this laundry service.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="card feature-card">
+          <h3>Good Quality</h3>
+          <p>We try to clean clothes carefully and keep fabric safe.</p>
+        </article>
+        <article class="card feature-card">
+          <h3>Fast Support</h3>
+          <p>Customers can contact us if they need help with booking.</p>
+        </article>
+        <article class="card feature-card">
+          <h3>On Time Delivery</h3>
+          <p>We try to complete orders on time and keep the process simple.</p>
+        </article>
+        <article class="card feature-card">
+          <h3>Affordable Price</h3>
+          <p>The prices are shown clearly on the page.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="content-section">
+      <article class="newsletter-box">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Enter your name and email to receive updates.</p>
+
+        <form id="newsletterForm" class="newsletter-form">
+          <input type="text" id="newsletterName" placeholder="Full Name">
+          <input type="email" id="newsletterEmail" placeholder="Email Address">
+          <button class="primary-button" type="submit">Subscribe</button>
+        </form>
+
+        <p id="newsletterMessage" class="message-box newsletter-message"></p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>&copy; 2026 FreshWash Laundry Services</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
