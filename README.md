@@ -11,7 +11,7 @@ The user can:
 - use the page on mobile with a menu button
 
 ## Files
-- `index.html` -> page structure
+- `index.html` -> page
 - `style.css` -> styling and responsive layout
 - `script.js` -> cart logic, form validation, and button events
 - `api/send-booking.js` -> secure email function for Vercel
@@ -89,3 +89,6 @@ This project helped me practice:
 - cart update logic
 - simple form checking
 - using a serverless function for secure email sending
+
+
+## I live on vercel tools because - netlify asking for credit that's why i used vercel
