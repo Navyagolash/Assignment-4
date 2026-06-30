@@ -13,7 +13,7 @@ body {
 
 .top-bar {
   /* I kept the top bar fixed so the menu stays visible while scrolling. */
-  background-color: #1f66d1;
+  background-color: #295ca9;
   color: white;
   position: sticky;
   top: 0;
@@ -117,7 +117,6 @@ body {
 }
 
 .booking-grid {
-  /* This area is split into service list on the left and cart/form on the right. */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
