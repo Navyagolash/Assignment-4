@@ -46,6 +46,7 @@ newsletterForm.addEventListener("submit", function (event) {
 });
 
 function addItem(serviceName, servicePrice) {
+  // I am storing each service by name so I can increase and decrease quantity.
   if (cart[serviceName]) {
     cart[serviceName].qty = cart[serviceName].qty + 1;
   } else {
@@ -81,7 +82,7 @@ function renderCart() {
         <td colspan="3">No items added yet.</td>
       </tr>
     `;
-    totalAmount.textContent = "₹0";
+    totalAmount.textContent = "Rs 0";
     return;
   }
 
@@ -97,13 +98,13 @@ function renderCart() {
       <tr>
         <td>${index + 1}</td>
         <td>${name} x ${item.qty}</td>
-        <td>₹${subTotal}</td>
+        <td>Rs ${subTotal}</td>
       </tr>
     `;
   });
 
   cartBody.innerHTML = rows;
-  totalAmount.textContent = "₹" + total;
+  totalAmount.textContent = "Rs " + total;
 }
 
 function showMessage(box, text, type) {
@@ -114,32 +115,6 @@ function showMessage(box, text, type) {
 function clearMessage(box) {
   box.textContent = "";
   box.className = "message-box";
-}
-
-function emailLooksOkay(email) {
-  if (email.indexOf("@") === -1) {
-    return false;
-  }
-
-  if (email.indexOf(".") === -1) {
-    return false;
-  }
-
-  return true;
-}
-
-function phoneLooksOkay(phone) {
-  if (phone.length !== 10) {
-    return false;
-  }
-
-  for (let i = 0; i < phone.length; i++) {
-    if (phone[i] < "0" || phone[i] > "9") {
-      return false;
-    }
-  }
-
-  return true;
 }
 
 function getOrderSummary() {
@@ -160,29 +135,21 @@ function getOrderSummary() {
 function bookNow() {
   clearMessage(bookingMessage);
 
-  const name = document.getElementById("bookName").value.trim();
-  const email = document.getElementById("bookEmail").value.trim();
-  const phone = document.getElementById("bookPhone").value.trim();
-
-  if (name === "" || email === "" || phone === "") {
-    showMessage(bookingMessage, "Please fill in all fields before booking.", "error");
+  // I am using HTML5 validation first so the browser handles the basic checks.
+  if (!bookingForm.checkValidity()) {
+    bookingForm.reportValidity();
     return;
   }
 
-  if (!emailLooksOkay(email)) {
-    showMessage(bookingMessage, "Please enter a valid email.", "error");
-    return;
-  }
-
-  if (!phoneLooksOkay(phone)) {
-    showMessage(bookingMessage, "Please enter a 10-digit phone number.", "error");
-    return;
-  }
-
+  // I still need one custom check because the form should not submit an empty cart.
   if (Object.keys(cart).length === 0) {
     showMessage(bookingMessage, "Please add at least one service to the cart.", "error");
     return;
   }
+
+  const name = document.getElementById("bookName").value.trim();
+  const email = document.getElementById("bookEmail").value.trim();
+  const phone = document.getElementById("bookPhone").value.trim();
 
   let total = 0;
   Object.keys(cart).forEach(function (itemName) {
@@ -193,10 +160,12 @@ function bookNow() {
     customer_name: name,
     customer_email: email,
     customer_phone: phone,
+    to_email: email,
     order_summary: getOrderSummary(),
-    total_amount: "₹" + total
+    total_amount: "Rs " + total
   };
 
+  // This fetch sends the booking details to my Vercel API file.
   fetch("/api/send-booking", {
     method: "POST",
     headers: {
@@ -205,51 +174,38 @@ function bookNow() {
     body: JSON.stringify(bookingData)
   })
     .then(function (response) {
-      if (!response.ok) {
-        return response.json().then(function (data) {
-          throw new Error(data.message || "Email could not be sent.");
-        });
-      }
-
       return response.json();
     })
-    .then(function () {
-      showMessage(
-        bookingMessage,
-        "Thank you For Booking the Service We will get back to you soon!",
-        "success"
-      );
+    .then(function (data) {
+      if (data.message === "Email sent") {
+        showMessage(
+          bookingMessage,
+          "Thank you For Booking the Service We will get back to you soon!",
+          "success"
+        );
 
-      bookingForm.reset();
+        bookingForm.reset();
 
-      Object.keys(cart).forEach(function (itemName) {
-        delete cart[itemName];
-      });
+        Object.keys(cart).forEach(function (itemName) {
+          delete cart[itemName];
+        });
 
-      renderCart();
+        renderCart();
+      } else {
+        showMessage(bookingMessage, data.message || "Email could not be sent.", "error");
+      }
     })
     .catch(function () {
-      showMessage(
-        bookingMessage,
-        "Booking saved, but email could not be sent right now.",
-        "error"
-      );
+      showMessage(bookingMessage, "Email could not be sent.", "error");
     });
 }
 
 function subscribeNow() {
   clearMessage(newsletterMessage);
 
-  const newsletterName = document.getElementById("newsletterName").value.trim();
-  const newsletterEmail = document.getElementById("newsletterEmail").value.trim();
-
-  if (newsletterName === "" || newsletterEmail === "") {
-    showMessage(newsletterMessage, "Please enter name and email.", "error");
-    return;
-  }
-
-  if (!emailLooksOkay(newsletterEmail)) {
-    showMessage(newsletterMessage, "Please enter a valid email.", "error");
+  // The newsletter form also uses the browser's built-in required and email checks.
+  if (!newsletterForm.checkValidity()) {
+    newsletterForm.reportValidity();
     return;
   }
 

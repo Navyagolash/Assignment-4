@@ -34,7 +34,7 @@
       </article>
 
       <aside class="hero-image-box">
-        <span class="hero-icon">🧺</span>
+        <span class="hero-icon">&#129533;</span>
       </aside>
     </section>
 
@@ -161,17 +161,17 @@
             <form id="bookingForm">
               <div class="form-group">
                 <label for="bookName">Full Name</label>
-                <input type="text" id="bookName" name="bookName">
+                <input type="text" id="bookName" name="bookName" required>
               </div>
 
               <div class="form-group">
                 <label for="bookEmail">Email</label>
-                <input type="email" id="bookEmail" name="bookEmail">
+                <input type="email" id="bookEmail" name="bookEmail" required>
               </div>
 
               <div class="form-group">
                 <label for="bookPhone">Phone Number</label>
-                <input type="tel" id="bookPhone" name="bookPhone">
+                <input type="tel" id="bookPhone" name="bookPhone" required pattern="[0-9]{10}" maxlength="10">
               </div>
 
               <button class="primary-button form-button" type="submit">Book Now</button>
@@ -215,8 +215,8 @@
         <p>Enter your name and email to receive updates.</p>
 
         <form id="newsletterForm" class="newsletter-form">
-          <input type="text" id="newsletterName" placeholder="Full Name">
-          <input type="email" id="newsletterEmail" placeholder="Email Address">
+          <input type="text" id="newsletterName" placeholder="Full Name" required>
+          <input type="email" id="newsletterEmail" placeholder="Email Address" required>
           <button class="primary-button" type="submit">Subscribe</button>
         </form>
 

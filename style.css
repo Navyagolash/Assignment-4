@@ -12,6 +12,7 @@ body {
 }
 
 .top-bar {
+  /* I kept the top bar fixed so the menu stays visible while scrolling. */
   background-color: #1f66d1;
   color: white;
   position: sticky;
@@ -63,6 +64,7 @@ body {
 }
 
 .hero-section {
+  /* On desktop I used two columns for the intro text and the image box. */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -115,6 +117,7 @@ body {
 }
 
 .booking-grid {
+  /* This area is split into service list on the left and cart/form on the right. */
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -292,6 +295,7 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* On smaller screens I stack the sections into one column to keep it readable. */
   .menu-button {
     display: inline-block;
   }
